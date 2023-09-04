@@ -1,0 +1,27 @@
+baseURL = 'http://wing.chillout.chat/'
+languageCode = 'ja-JP'
+contentDir = 'content'
+theme = 'paper'
+
+title = '/home/wing'
+author = 'Karasuma'
+copyright = '© Karasuma'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[permalinks]
+  post = '/:year/:month/:day/:slug/'
+
+[params]
+  color = 'linen'
+
+  github = 'kwing0310'
+  mastodon = 'https://chillout.chat/@wing'
+  rss = true
+
+  avatar = 'wing@chillout.chat'
+  name = 'Karasuma'
+  bio = 'High school student, Linux enthusiast'
