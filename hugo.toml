@@ -1,6 +1,7 @@
 baseURL = 'http://wing.chillout.chat/'
 languageCode = 'ja-JP'
 contentDir = 'content'
+publishDir = "docs"
 theme = 'paper'
 
 title = '/home/wing'
