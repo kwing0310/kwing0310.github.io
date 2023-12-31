@@ -1,7 +1,8 @@
 ---
 title: "My Favorite Music in 2023"
 date: 2023-12-31T23:45:20+09:00
-draft: true
+slug: "fav-music-2023"
+
 ---
 
 *これは [Your Favorite Music in 2023 Advent Calendar](https://adventar.org/calendars/8828) 24日目の記事です。*

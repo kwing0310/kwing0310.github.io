@@ -7,7 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>© Karasuma</copyright>
-    <lastBuildDate>Mon, 04 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://wing.chillout.chat/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 31 Dec 2023 23:45:20 +0900</lastBuildDate><atom:link href="http://wing.chillout.chat/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My Favorite Music in 2023</title>
+      <link>http://wing.chillout.chat/2023/12/31/fav-music-2023/</link>
+      <pubDate>Sun, 31 Dec 2023 23:45:20 +0900</pubDate>
+      
+      <guid>http://wing.chillout.chat/2023/12/31/fav-music-2023/</guid>
+      <description>これは Your Favorite Music in 2023 Advent Calendar 24日目の記事です。
+こんばんは。Chillout Chat 鯖缶 (技術担当) のからすま (@wing@chillout.chat) です。大遅刻大変失礼いたしました。年を越さずに公開するためにも早速紹介を始めていきたいと思います。
+Local Visions &amp;amp; Yuka Nagase - さくらりら https://www.youtube.com/watch?v=RXWMdhZ1Dxk
+長瀬有花さんと Local Visions とのコラボアルバム &amp;ldquo;OACL&amp;rdquo; より。90年代のアニソンを彷彿とさせるようなシンセのサウンドが特徴的です。聴いていると存在しないアニメのオープニング映像が自然と頭に浮かんできます。
+幾砂襷 - ハイパーサイン + 足立レイ https://www.youtube.com/watch?v=zEezpM56vYU
+レイさんの声にマッチする音作りと息をのむほど美しい歌詞が素晴らしいです。ベースとなる人間のいない足立レイだからこそできる新たな表現の可能性を感じる一曲です。
+Kijibato - へるぷ！ (feat. をとは) https://www.youtube.com/watch?v=Fcjhsq9c3d8
+可愛い曲調とは対照的な深い病みを感じる歌詞のインパクトに引き込まれました。辛いときはだいたいリピートで聴いていた気がします。少し毒のあるような言葉がむしろ自分を救ってくれるように感じるのです。
+中川翔子 - 65535 https://www.youtube.com/watch?v=6xXu0cneaSY
+オリジナルアニメ &amp;ldquo;16bitセンセーション&amp;rdquo; のオープニングテーマ。&amp;ldquo;65535&amp;rdquo; は 16bit ハイカラーディスプレイが発色できる色の数であり、同作におけるゲーム制作の場面にも関わりがあります。世代問わずあらゆるオタクにぜひ聴いてほしい一曲です。
+Bôa - Duvet 2023 https://www.youtube.com/watch?v=s0NME1GfbIc
+98年の伝説的なメディアミックス作品 &amp;ldquo;serial experiments lain&amp;rdquo; のアニメ版主題歌。セルフカバーのMVが今年、25周年を機に公開されました。lain と同様にいつまで経っても新鮮さを感じる名曲です。
+居間のテレビから蛍の光が聞こえてきました。そろそろ除夜の鐘といったところでしょうか。とりあえず執筆を終わらせることにします。今年も皆様には大変お世話になりました。来年もまた、どうぞよろしくお願いいたします。</description>
+    </item>
+    
     <item>
       <title>MacBook Pro 15,1 (2018) に Arch Linux をインストールする手順</title>
       <link>http://wing.chillout.chat/2023/09/04/arch-on-mbp151/</link>
