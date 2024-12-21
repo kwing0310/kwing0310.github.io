@@ -25,7 +25,7 @@ date: "2024-12-21"
 
 <iframe src="https://chillout.chat/@wing/113691014657231914/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script src="https://chillout.chat/embed.js" async="async"></script>
 
-この動画のように，自宅にあるビジネス向け IP 電話機から自動応答システム (内線 `115`) に接続することで Mastodon / Misskey に投稿を送信しています．
+この動画のように，自宅にあるビジネス向け IP 電話機から自動応答システム (内線 `115`) に接続することで Mastodon に投稿を送信しています．
 
 システムが応答したらポケベル打ちでメッセージ本文「ハヤヤッコ」を入力し，最後に `#` を押します．すると入力内容が自動的に投稿され，完了のメッセージとともに電話が切断されます．
 
@@ -126,7 +126,7 @@ from dotenv import load_dotenv
 
 digits = sys.argv[1]
 text = ''
-size = len(digits)複数アカウントの切り替えや，
+size = len(digits)
 print('input:', digits)
 
 load_dotenv()
@@ -144,7 +144,7 @@ api = Mastodon(
 if digits[0:4] == '*2*2':
     i = 4
     with open('/root/asterisk-config/pokebell-code.json') as f:
-        code = json.load(f)複数アカウントの切り替えや，
+        code = json.load(f)
 
     while i < size:
         if digits[i:i+2] == '*4':
