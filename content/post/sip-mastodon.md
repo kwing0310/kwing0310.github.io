@@ -1,5 +1,5 @@
 ---
-title: "電話機から Mastodon に投稿してみた"
+title: "電話機で Mastodon に投稿してみた"
 slug: "sip-mastodon"
 description: "OpenWrt ルータに Asterisk サーバを構築し，自動応答と Python を組み合わせて電話機からポケベル打ちで Mastodon に投稿できるようにしました．"
 date: "2024-12-21"

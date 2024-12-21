@@ -1,0 +1,496 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="ja-JP"
+  dir="ltr"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>電話機で Mastodon に投稿してみた - /home/wing</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="
+🎄 この記事は Fediverse (2) Advent Calendar 17日目の記事です．
+
+みなさんこんにちは．Mastodon サーバ Chillout Chat 管理人 (技術担当) の Karasuma です．今回はサーバの運営とは関係ありませんが，少しマニアックな話題をお届けします．
+
+  Chillout Chat (略称: チルチャ) について
+  Chillout Chat は「音楽好きの人が集まる，chill out ≒ 落ち着き・くつろぎ の空間」をコンセプトにしている Mastodon サーバです．2021年から3年以上の運用実績があり，来年の春には4周年を迎えます．
+  実装されている独自機能など，詳しい情報は info.chillout.chat に掲載しています．
+
+前置き
+2006年生まれの私は，おそらくスマホ普及前の様子を覚えている最後の世代であり，公衆電話網を利用したサービスの衰退を見ながら育ってきました．その中でも2019年9月末に個人向け無線呼び出しサービス (いわゆる「ポケベル」) が終了したときのことは強く印象に残っています．サービス最終日には「ポケベル終了を見守る配信」 と題した番組がニコ生で放送されており，番組内で電話番号を公開していたポケベルにメッセージを送ったことが，自分にとって最初で最後のポケベルに触れた体験でした．
+「2 タッチ入力」「ポケベル打ち」などと呼ばれるメッセージの記法は今でも一部の IME に搭載されているほか，NTT ドコモの電話から SMS を送るサービスにも採用されています．SMS だけでなく Mastodon や Misskey にもポケベル打ちで投稿できれば面白いかもしれません．
+完成形
+
+この動画のように，自宅にあるビジネス向け IP 電話機から自動応答システム (内線 115) に接続することで Mastodon / Misskey に投稿を送信しています．
+システムが応答したらポケベル打ちでメッセージ本文「ハヤヤッコ」を入力し，最後に # を押します．すると入力内容が自動的に投稿され，完了のメッセージとともに電話が切断されます．
+(ガイダンス音声は VOICEVOX ナースロボ_タイプT で作成しました)
+システムの全体像
+
+自宅の LAN 内に VoIP (Voice over IP) を利用した内線電話網を構築し，その中心となる内線交換ソフトウェア (IP-PBX) に自動応答の機能を付加することで実現しています．VoIP のプロトコルには SIP を採用しており，IP-PBX は OSS の Asterisk を使っています．" />
+  <meta name="author" content="Karasuma" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="http://wing.chillout.chat/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="http://wing.chillout.chat/theme.png" />
+
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://www.gravatar.com/avatar/7ce8117640e781e549d0cb1dd74250a7?s=160&amp;d=identicon" />
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="http://wing.chillout.chat/github.svg" />
+  
+  <link rel="preload" as="image" href="http://wing.chillout.chat/mastodon.svg" />
+  
+  <link rel="preload" as="image" href="http://wing.chillout.chat/rss.svg" />
+  
+  
+
+  
+  
+  <script
+    defer
+    src="http://wing.chillout.chat/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  
+  
+
+  
+  <link
+    rel="icon"
+    href="http://wing.chillout.chat/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="http://wing.chillout.chat/apple-touch-icon.png"
+  />
+
+  
+  <meta name="generator" content="Hugo 0.140.0">
+
+  
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="電話機で Mastodon に投稿してみた">
+  <meta itemprop="description" content="OpenWrt ルータに Asterisk サーバを構築し，自動応答と Python を組み合わせて電話機からポケベル打ちで Mastodon に投稿できるようにしました．">
+  <meta itemprop="datePublished" content="2024-12-21T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2024-12-21T00:00:00+00:00">
+  <meta itemprop="wordCount" content="408">
+  
+  <meta property="og:url" content="http://wing.chillout.chat/2024/12/21/sip-mastodon/">
+  <meta property="og:site_name" content="/home/wing">
+  <meta property="og:title" content="電話機で Mastodon に投稿してみた">
+  <meta property="og:description" content="OpenWrt ルータに Asterisk サーバを構築し，自動応答と Python を組み合わせて電話機からポケベル打ちで Mastodon に投稿できるようにしました．">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-12-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-12-21T00:00:00+00:00">
+
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="電話機で Mastodon に投稿してみた">
+  <meta name="twitter:description" content="OpenWrt ルータに Asterisk サーバを構築し，自動応答と Python を組み合わせて電話機からポケベル打ちで Mastodon に投稿できるようにしました．">
+
+  
+  
+
+  
+  <link rel="canonical" href="http://wing.chillout.chat/2024/12/21/sip-mastodon/" />
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-[--w] px-8 lg:justify-center">
+  <div class="relative z-50 ltr:mr-auto rtl:ml-auto flex items-center">
+    <a class="-translate-y-[1px] text-2xl font-medium" href="http://wing.chillout.chat/"
+      >/home/wing</a
+    >
+    <div
+      class="btn-dark text-[0] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 ltr:-mr-8 rtl:-ml-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 rtl:space-x-reverse dark:invert ltr:lg:ml-14 rtl:lg:mr-14 lg:mt-0 lg:items-center"
+    >
+      
+      <a
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/kwing0310"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./mastodon.svg)"
+        href="https://chillout.chat/@wing"
+        target="_blank"
+        rel="me"
+      >
+        mastodon
+      </a>
+      
+      <a
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./rss.svg)"
+        href="http://wing.chillout.chat/index.xml"
+        target="_blank"
+        rel="alternate"
+      >
+        rss
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100vh-9rem)] max-w-[--w] px-8 pb-16 pt-14 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-14">
+    <h1 class="!my-0 pb-2.5">電話機で Mastodon に投稿してみた</h1>
+
+    
+    <div class="text-xs antialiased opacity-60">
+      
+      <time>Dec 21, 2024</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><blockquote>
+<p>🎄 この記事は <a href="https://adventar.org/calendars/10064">Fediverse (2) Advent Calendar</a> 17日目の記事です．</p>
+</blockquote>
+<p>みなさんこんにちは．Mastodon サーバ <a href="https://chillout.chat">Chillout Chat</a> 管理人 (技術担当) の Karasuma です．今回はサーバの運営とは関係ありませんが，少しマニアックな話題をお届けします．</p>
+<details>
+  <summary>Chillout Chat (略称: チルチャ) について</summary>
+  <p>Chillout Chat は「音楽好きの人が集まる，chill out ≒ 落ち着き・くつろぎ の空間」をコンセプトにしている Mastodon サーバです．2021年から3年以上の運用実績があり，来年の春には4周年を迎えます．</p>
+  <p>実装されている独自機能など，詳しい情報は <a href="https://info.chillout.chat">info.chillout.chat</a> に掲載しています．</p>
+</details>
+<h2 id="前置き">前置き</h2>
+<p>2006年生まれの私は，おそらくスマホ普及前の様子を覚えている最後の世代であり，公衆電話網を利用したサービスの衰退を見ながら育ってきました．その中でも2019年9月末に個人向け無線呼び出しサービス (いわゆる「ポケベル」) が終了したときのことは強く印象に残っています．サービス最終日には<a href="https://blog.nicovideo.jp/niconews/119196.html">「ポケベル終了を見守る配信」</a> と題した番組がニコ生で放送されており，番組内で電話番号を公開していたポケベルにメッセージを送ったことが，自分にとって最初で最後のポケベルに触れた体験でした．</p>
+<p>「2 タッチ入力」「ポケベル打ち」などと呼ばれるメッセージの記法は今でも一部の IME に搭載されているほか，NTT ドコモの電話から SMS を送るサービスにも採用されています．SMS だけでなく Mastodon や Misskey にもポケベル打ちで投稿できれば面白いかもしれません．</p>
+<h2 id="完成形">完成形</h2>
+<iframe src="https://chillout.chat/@wing/113691014657231914/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script src="https://chillout.chat/embed.js" async="async"></script>
+<p>この動画のように，自宅にあるビジネス向け IP 電話機から自動応答システム (内線 <code>115</code>) に接続することで Mastodon / Misskey に投稿を送信しています．</p>
+<p>システムが応答したらポケベル打ちでメッセージ本文「ハヤヤッコ」を入力し，最後に <code>#</code> を押します．すると入力内容が自動的に投稿され，完了のメッセージとともに電話が切断されます．</p>
+<p>(ガイダンス音声は <a href="https://voicevox.hiroshiba.jp/dormitory/nurserobo_typet/">VOICEVOX ナースロボ_タイプT</a> で作成しました)</p>
+<h3 id="システムの全体像">システムの全体像</h3>
+<img src="/images/sip-mastodon-system.png">
+<p>自宅の LAN 内に VoIP (Voice over IP) を利用した内線電話網を構築し，その中心となる内線交換ソフトウェア (IP-PBX) に自動応答の機能を付加することで実現しています．VoIP のプロトコルには SIP を採用しており，IP-PBX は OSS の <a href="https://www.asterisk.org/">Asterisk</a> を使っています．</p>
+<p>入力した数字は Python スクリプトに渡され，メッセージの変換と API を利用した Mastodon への投稿が行われます．</p>
+<p>動画で登場したビジネスフォンは中古で入手した AVAYA 9611G ですが，LAN に接続しているスマホなどの一般的な端末でも，SIP に対応したソフトフォンがあれば同様の操作をすることができます．</p>
+<h2 id="システムの構築">システムの構築</h2>
+<h3 id="openwrt-に-asteriskpython-を導入">OpenWrt に Asterisk・Python を導入</h3>
+<p>Asterisk はリソースが若干余り気味になっている <a href="https://openwrt.org/">OpenWrt</a> を導入したルータにインストールしました．OpenWrt はオープンソースのネットワーク機器向け Linux ディストリビューションであり，<a href="https://www.gl-inet.com/">GL.iNet</a> などの製品には標準で搭載されているほか，ファームウェアの書き換えによって導入できる既存の機器もたくさんあります．</p>
+<p>Asterisk・Python を扱う上で必要なパッケージをインストールします．(古いバージョンの OpenWrt では apk の代わりに opkg を使います)</p>
+<pre tabindex="0"><code>$ apk add asterisk asterisk-pjsip asterisk-bridge-simple asterisk-codec-alaw asterisk-codec-ulaw asterisk-res-rtp-asterisk asterisk-format-gsm asterisk-format-pcm
+</code></pre><p>自動応答を実装する上で必要になる Asterisk のアプリケーションも導入します．</p>
+<pre tabindex="0"><code>$ apk add asterisk-app-verbose asterisk-app-system asterisk-app-read
+</code></pre><p>次に Python をインストールします．Mastodon の API を簡単に利用するために <a href="https://github.com/halcy/Mastodon.py">Mastodon.py</a> を，Mastodon の認証情報を <code>.env</code> に保存するために <a href="https://github.com/theskumar/python-dotenv">python-dotenv</a> を使います．</p>
+<pre tabindex="0"><code>$ apk add python3-light python3-pip
+</code></pre><pre tabindex="0"><code>$ pip3 install Mastodon.py python-dotenv
+</code></pre><p>機器のフラッシュメモリが 20MB ほどあれば展開できますが，使うパッケージをさらに吟味する・自前でビルドする (未検証) などといった工夫はできそうです．</p>
+<h3 id="asterisk-サーバの設定">Asterisk サーバの設定</h3>
+<p><code>/etc/asterisk</code> にある設定ファイル <code>pjsip.conf</code> と <code>extensions.conf</code> を編集します．前者の内容は自動応答を実装しない場合と変わらないため割愛します．以下は <code>extensions.conf</code> の自動応答に関する部分の抜粋です．</p>
+<pre tabindex="0"><code>; 115: Fediverse Post Dial
+exten =&gt; 115,1,Answer()
+same =&gt; n,Verbose(2,Caller: ${CALLERID(num)})
+same =&gt; n,Wait(3)
+; こちらは Fediverse Post Dial です
+same =&gt; n,Playback(/etc/asterisk/sounds/postdial1)
+same =&gt; n,Wait(1)
+; メッセージを入力し，最後にシャープを押してください
+same =&gt; n,Read(Digits,/etc/asterisk/sounds/postdial2,0,e,1,0)
+same =&gt; n,Verbose(2,Input: ${Digits})
+same =&gt; n,System(python3 /root/asterisk-config/fedi-post.py ${Digits})
+; ご利用ありがとうございました
+same =&gt; n,Playback(/etc/asterisk/sounds/thanks)
+same =&gt; n,Hangup()
+</code></pre><p>自動で再生する音声ファイルはサンプリングレート 8kHz，モノラル，ulaw 形式で保存します．<code>extensions.conf</code> に音声ファイルのパスを書く際は拡張子を含めないことに注意が必要です．</p>
+<h3 id="avaya-9611g-の設定">AVAYA 9611G の設定</h3>
+<p>LAN 内に立てた Web サーバに <code>96x1Supgrade.txt</code> <code>46xxsettings.txt</code>, を配置し，その中に Asterisk サーバの IP アドレス・ポートなどといった接続情報を書いて読み込ませるとスムーズに設定が進みます．詳しくは <a href="https://documentation.avaya.com/ja-JP/bundle/IPOfficeBranchMigrate/page/ConvertingAll96x1PhonesToSIP.html">公式ドキュメント</a> を参照してください．</p>
+<p>OpenWrt にはブラウザでアクセスする GUI の設定画面 (<a href="https://openwrt.org/docs/guide-user/luci/start">LuCI</a>) が付属しており，LuCI を動かすための Web サーバとして <a href="https://openwrt.org/docs/guide-user/services/webserver/uhttpd">uhttpd</a> がプリインストールされています．今回は設定ファイルを uhttpd のルートディレクトリである <code>/www</code> に配置しました．</p>
+<h3 id="python-スクリプトの実装">Python スクリプトの実装</h3>
+<p><code>*2*2</code> が初めに入力された場合は文字に変換し，そうでない場合は数字をそのまま投稿するようにします．また，英小文字や「ッ」「ャ」「ュ」「ョ」などは直前に <code>*4</code> を入力することで識別しています．数字と文字との対応関係は <code>pokebell-code.json</code> に記載し，スクリプトから読み込むようにします．</p>
+<p><code>.env</code></p>
+<pre tabindex="0"><code>CLIENT_KEY=XXXXXXXXXXXXX
+CLIENT_SECRET=XXXXXXXXXXXXX
+ACCESS_TOKEN=XXXXXXXXXXXXX
+</code></pre><p><code>fedi-post.py</code></p>
+<pre tabindex="0"><code>#!/usr/bin/python
+
+import os
+import sys
+import json
+from mastodon import Mastodon
+from dotenv import load_dotenv
+
+digits = sys.argv[1]
+text = &#39;&#39;
+size = len(digits)複数アカウントの切り替えや，
+print(&#39;input:&#39;, digits)
+
+load_dotenv()
+client_key = os.getenv(&#39;CLIENT_KEY&#39;)
+client_secret = os.getenv(&#39;CLIENT_SECRET&#39;)
+access_token = os.getenv(&#39;ACCESS_TOKEN&#39;)
+
+api = Mastodon(
+    api_base_url  = &#39;https://nightly.chillout.chat&#39;,
+    client_id     = client_key,
+    client_secret = client_secret,
+    access_token  = access_token
+)
+
+if digits[0:4] == &#39;*2*2&#39;:
+    i = 4
+    with open(&#39;/root/asterisk-config/pokebell-code.json&#39;) as f:
+        code = json.load(f)複数アカウントの切り替えや，
+
+    while i &lt; size:
+        if digits[i:i+2] == &#39;*4&#39;:
+            text += code[&#39;small&#39;][digits[i+2:i+4]]
+            i += 4
+        else:
+            text += code[&#39;normal&#39;][digits[i:i+2]]
+            i += 2
+else:
+    text = digits
+
+print(&#39;output:&#39;, text)
+api.toot(text)
+</code></pre><p><code>pokebell-code.json</code></p>
+<pre tabindex="0"><code>{
+    &#34;normal&#34;: {
+        &#34;11&#34;: &#34;ア&#34;, &#34;12&#34;: &#34;イ&#34;, &#34;13&#34;: &#34;ウ&#34;, &#34;14&#34;: &#34;エ&#34;, &#34;15&#34;: &#34;オ&#34;, ... (省略)
+    },
+    &#34;small&#34;: {
+        &#34;11&#34;: &#34;ァ&#34;, &#34;12&#34;: &#34;ィ&#34;, &#34;13&#34;: &#34;ゥ&#34;, &#34;14&#34;: &#34;ェ&#34;, &#34;15&#34;: &#34;ォ&#34;, ... (省略)
+    }
+}
+</code></pre><p>いずれも <code>/root/asterisk-config</code> に配置しました．</p>
+<h2 id="今後の展望">今後の展望</h2>
+<p>今回はあくまでデモンストレーションのため，単一アカウントで投稿するだけというシンプルな形になりましたが，タイムラインの読み上げなどを実装するとさらに実用的になるかもしれません．</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  
+  <nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg !leading-[1.2] *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  >
+    
+    
+    <a class="ltr:ml-auto rtl:mr-auto justify-end pl-3" href="http://wing.chillout.chat/2023/12/31/fav-music-2023/"
+      ><span>My Favorite Music in 2023</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="mx-auto flex h-[4.5rem] max-w-[--w] items-center px-8 text-xs uppercase tracking-wider opacity-60"
+>
+  <div class="mr-auto">
+  
+    © Karasuma
+  
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >powered by hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >hugo-paper</a
+  >
+</footer>
+
+  </body>
+</html>

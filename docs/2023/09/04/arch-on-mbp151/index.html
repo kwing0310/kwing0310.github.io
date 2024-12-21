@@ -41,10 +41,16 @@
 
 
 
+
+
+
+
+
 <html
   class="not-ready lg:text-base"
   style="--bg: #faf8f1"
   lang="ja-JP"
+  dir="ltr"
 >
   <head>
   <meta charset="utf-8" />
@@ -63,10 +69,20 @@
   
   
   
-  <meta name="description" content="Wallpaper: Arch ちゃん by Ravimo (CC-BY 4.0)
-Introduction 2018 年から 2020 年夏までの間に発表された Intel Mac には Apple T2 セキュリティチップが搭載されており、サードパーティ製の OS が簡単に動作しないようになっています。T2 チップに対応した Linux カーネルやドライバーを開発するコミュニティ主導の t2linux プロジェクトが進み、十分に実用できるほどの段階になってきたため、私のメイン機である MacBook Pro 15,1 (2018) に Arch Linux をインストールしてみました。
-btw I use Arch 4 年以上使い続けた macOS が素晴らしい OS であることは言うまでもありませんが、今後のメイン機の利用目的を考えると Arch Linux をクリーンインストールしても良いのではないか、という考えに至りました。詳しい経緯については別の記事に書きたいと思いますが、今伝えたいのは「相当な理由が無い限り、T2 Mac に Linux をインストールすることは避けるべきである」ということです。ただでさえ大変な Arch Linux のインストール手順に T2 Mac 特有の作業が必要になるわけですから、覚悟が必要なのは当然と言ってもいいかもしれませんね。
-⚠ Caution この記事は 2023 年 9 月現在の情報をもとに書かれています。インストールする前に t2linux wiki で最新の情報を確認することを強く推奨します。 この記事に掲載された内容によって生じた損害等の一切の責任を負いかねますのでご了承ください。試す際は自己責任でお願いします。 下準備 基本的には Pre-Install - t2linux wiki に従って進めていく形となります。今回は実験的に Arch Linux のみのシングルブートを試してみましたが、Mac のファームウェアの更新 (ソフトウェアアップデート) が macOS 経由でしかできないため、macOS とのデュアルブートをおすすめします。" />
+  
+  <meta name="description" content="
+Wallpaper: Arch ちゃん by Ravimo (CC-BY 4.0)
+Introduction
+2018 年から 2020 年夏までの間に発表された Intel Mac には Apple T2 セキュリティチップが搭載されており、サードパーティ製の OS が簡単に動作しないようになっています。T2 チップに対応した Linux カーネルやドライバーを開発するコミュニティ主導の t2linux プロジェクトが進み、十分に実用できるほどの段階になってきたため、私のメイン機である MacBook Pro 15,1 (2018) に Arch Linux をインストールしてみました。
+btw I use Arch
+4 年以上使い続けた macOS が素晴らしい OS であることは言うまでもありませんが、今後のメイン機の利用目的を考えると Arch Linux をクリーンインストールしても良いのではないか、という考えに至りました。詳しい経緯については別の記事に書きたいと思いますが、今伝えたいのは「相当な理由が無い限り、T2 Mac に Linux をインストールすることは避けるべきである」ということです。ただでさえ大変な Arch Linux のインストール手順に T2 Mac 特有の作業が必要になるわけですから、覚悟が必要なのは当然と言ってもいいかもしれませんね。
+⚠ Caution
+
+この記事は 2023 年 9 月現在の情報をもとに書かれています。インストールする前に t2linux wiki で最新の情報を確認することを強く推奨します。
+この記事に掲載された内容によって生じた損害等の一切の責任を負いかねますのでご了承ください。試す際は自己責任でお願いします。
+
+下準備
+基本的には Pre-Install - t2linux wiki に従って進めていく形となります。今回は実験的に Arch Linux のみのシングルブートを試してみましたが、Mac のファームウェアの更新 (ソフトウェアアップデート) が macOS 経由でしかできないため、macOS とのデュアルブートをおすすめします。" />
   <meta name="author" content="Karasuma" />
   
 
@@ -79,17 +95,13 @@ btw I use Arch 4 年以上使い続けた macOS が素晴らしい OS である�
   <link rel="preload stylesheet" as="style" href="http://wing.chillout.chat/main.min.css" />
 
   
-  <script
-    defer
-    src="http://wing.chillout.chat/highlight.min.js"
-    onload="hljs.initHighlightingOnLoad();"
-  ></script>
   
-
   
-   
+  
+  
   <link rel="preload" as="image" href="http://wing.chillout.chat/theme.png" />
 
+  
   
   
   
@@ -97,6 +109,7 @@ btw I use Arch 4 年以上使い続けた macOS が素晴らしい OS である�
   
   
 
+  
   
   <link rel="preload" as="image" href="http://wing.chillout.chat/github.svg" />
   
@@ -108,58 +121,88 @@ btw I use Arch 4 年以上使い続けた macOS が素晴らしい OS である�
 
   
   
-
-  
-  <link rel="icon" href="http://wing.chillout.chat/favicon.ico" />
-  <link rel="apple-touch-icon" href="http://wing.chillout.chat/apple-touch-icon.png" />
-
-  
-  <meta name="generator" content="Hugo 0.119.0">
-
-  
+  <script
+    defer
+    src="http://wing.chillout.chat/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
   
 
+  
+  
+  
+
+  
+  <link
+    rel="icon"
+    href="http://wing.chillout.chat/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="http://wing.chillout.chat/apple-touch-icon.png"
+  />
+
+  
+  <meta name="generator" content="Hugo 0.140.0">
+
+  
   
   
   
   
   
   <meta itemprop="name" content="MacBook Pro 15,1 (2018) に Arch Linux をインストールする手順">
-<meta itemprop="description" content="Apple T2 セキュリティチップを搭載した MacBook Pro 15,1 (2018) に Arch Linux をシングルブートでインストールしてみました。"><meta itemprop="datePublished" content="2023-09-04T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2023-09-04T00:00:00+00:00" />
-<meta itemprop="wordCount" content="341">
-<meta itemprop="keywords" content="" />
+  <meta itemprop="description" content="Apple T2 セキュリティチップを搭載した MacBook Pro 15,1 (2018) に Arch Linux をシングルブートでインストールしてみました。">
+  <meta itemprop="datePublished" content="2023-09-04T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2023-09-04T00:00:00+00:00">
+  <meta itemprop="wordCount" content="341">
   
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="MacBook Pro 15,1 (2018) に Arch Linux をインストールする手順"/>
-<meta name="twitter:description" content="Apple T2 セキュリティチップを搭載した MacBook Pro 15,1 (2018) に Arch Linux をシングルブートでインストールしてみました。"/>
+  <meta property="og:url" content="http://wing.chillout.chat/2023/09/04/arch-on-mbp151/">
+  <meta property="og:site_name" content="/home/wing">
+  <meta property="og:title" content="MacBook Pro 15,1 (2018) に Arch Linux をインストールする手順">
+  <meta property="og:description" content="Apple T2 セキュリティチップを搭載した MacBook Pro 15,1 (2018) に Arch Linux をシングルブートでインストールしてみました。">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2023-09-04T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-09-04T00:00:00+00:00">
 
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="MacBook Pro 15,1 (2018) に Arch Linux をインストールする手順">
+  <meta name="twitter:description" content="Apple T2 セキュリティチップを搭載した MacBook Pro 15,1 (2018) に Arch Linux をシングルブートでインストールしてみました。">
+
+  
+  
+
+  
+  <link rel="canonical" href="http://wing.chillout.chat/2023/09/04/arch-on-mbp151/" />
   
   
 </head>
 
   <body class="text-black duration-200 ease-out dark:text-white">
-    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
-  <div class="relative z-50 mr-auto flex items-center">
-    <a
-      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
-      href="http://wing.chillout.chat/"
+    <header class="mx-auto flex h-[4.5rem] max-w-[--w] px-8 lg:justify-center">
+  <div class="relative z-50 ltr:mr-auto rtl:ml-auto flex items-center">
+    <a class="-translate-y-[1px] text-2xl font-medium" href="http://wing.chillout.chat/"
       >/home/wing</a
     >
     <div
-      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      class="btn-dark text-[0] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
       role="button"
       aria-label="Dark"
     ></div>
   </div>
 
   <div
-    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    class="btn-menu relative z-50 ltr:-mr-8 rtl:-ml-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
     role="button"
     aria-label="Menu"
   ></div>
 
   
+
   <script>
     
     const htmlClass = document.documentElement.classList;
@@ -211,11 +254,11 @@ btw I use Arch 4 年以上使い続けた macOS が素晴らしい OS である�
 
     
     <nav
-      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+      class="mt-12 flex justify-center space-x-10 rtl:space-x-reverse dark:invert ltr:lg:ml-14 rtl:lg:mr-14 lg:mt-0 lg:items-center"
     >
       
       <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
         style="--url: url(./github.svg)"
         href="https://github.com/kwing0310"
         target="_blank"
@@ -225,7 +268,7 @@ btw I use Arch 4 年以上使い続けた macOS が素晴らしい OS である�
       </a>
       
       <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
         style="--url: url(./mastodon.svg)"
         href="https://chillout.chat/@wing"
         target="_blank"
@@ -235,7 +278,7 @@ btw I use Arch 4 年以上使い続けた macOS が素晴らしい OS である�
       </a>
       
       <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
         style="--url: url(./rss.svg)"
         href="http://wing.chillout.chat/index.xml"
         target="_blank"
@@ -251,16 +294,16 @@ btw I use Arch 4 年以上使い続けた macOS が素晴らしい OS である�
 
 
     <main
-      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+      class="prose prose-neutral relative mx-auto min-h-[calc(100vh-9rem)] max-w-[--w] px-8 pb-16 pt-14 dark:prose-invert"
     >
       
 
 <article>
-  <header class="mb-16">
+  <header class="mb-14">
     <h1 class="!my-0 pb-2.5">MacBook Pro 15,1 (2018) に Arch Linux をインストールする手順</h1>
 
     
-    <div class="text-sm antialiased opacity-60">
+    <div class="text-xs antialiased opacity-60">
       
       <time>Sep 4, 2023</time>
       
@@ -302,34 +345,34 @@ btw I use Arch 4 年以上使い続けた macOS が素晴らしい OS である�
 <h3 id="パーティション">パーティション</h3>
 <p>/dev/nvme0n1 が Mac の内蔵 SSD です。既に EFI 用の /dev/nvme0n1p1 が用意されているため、スワップとファイルシステム用のパーティションを準備していきます。EFI 用のパーティションもマウントが必要です。今回は以下のように設定しました。</p>
 <table>
-<thead>
-<tr>
-<th>マウントポイント</th>
-<th>パーティション</th>
-<th>パーティションタイプ</th>
-<th>容量</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>/mnt/boot</td>
-<td>/dev/nvme0n1p1</td>
-<td>EFI システムパーティション</td>
-<td>300MiB</td>
-</tr>
-<tr>
-<td>swap</td>
-<td>/dev/nvme0n1p2</td>
-<td>Linux swap</td>
-<td>18GiB</td>
-</tr>
-<tr>
-<td>/mnt</td>
-<td>/dev/nvme0n1p3</td>
-<td>Linux x86_64 root (/)</td>
-<td>残り容量全て</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>マウントポイント</th>
+          <th>パーティション</th>
+          <th>パーティションタイプ</th>
+          <th>容量</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>/mnt/boot</td>
+          <td>/dev/nvme0n1p1</td>
+          <td>EFI システムパーティション</td>
+          <td>300MiB</td>
+      </tr>
+      <tr>
+          <td>swap</td>
+          <td>/dev/nvme0n1p2</td>
+          <td>Linux swap</td>
+          <td>18GiB</td>
+      </tr>
+      <tr>
+          <td>/mnt</td>
+          <td>/dev/nvme0n1p3</td>
+          <td>Linux x86_64 root (/)</td>
+          <td>残り容量全て</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="必須パッケージのインストール">必須パッケージのインストール</h3>
 <p>インストールするカーネルが linux-t2 となるなど、必須パッケージが通常と異なるため、ArchWiki の「必須パッケージのインストール」部分は t2linux wiki に記載されている 5 番目の手順に置き換えます。</p>
@@ -360,12 +403,12 @@ btw I use Arch 4 年以上使い続けた macOS が素晴らしい OS である�
   
   
   
-  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+  <nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg !leading-[1.2] *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  >
     
-    <a
-      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
-      href="http://wing.chillout.chat/2023/12/31/fav-music-2023/"
-      ><span class="mr-1.5">←</span><span>My Favorite Music in 2023</span></a
+    <a class="ltr:pr-3 rtl:pl-3" href="http://wing.chillout.chat/2023/12/31/fav-music-2023/"
+      ><span class="ltr:mr-1.5 rtl:ml-1.5">←</span><span>My Favorite Music in 2023</span></a
     >
     
     
@@ -378,27 +421,33 @@ btw I use Arch 4 年以上使い続けた macOS が素晴らしい OS である�
 
   
   
+
+  
+
+
+  
 </article>
 
 
     </main>
 
     <footer
-  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  class="mx-auto flex h-[4.5rem] max-w-[--w] items-center px-8 text-xs uppercase tracking-wider opacity-60"
 >
   <div class="mr-auto">
-    &copy; 2023
-    <a class="link" href="http://wing.chillout.chat/">/home/wing</a>
+  
+    © Karasuma
+  
   </div>
   <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
-    >Powered by Hugo️️</a
+    >powered by hugo️️</a
   >️
   <a
     class="link"
     href="https://github.com/nanxiaobei/hugo-paper"
     rel="noopener"
     target="_blank"
-    >✎ Paper</a
+    >hugo-paper</a
   >
 </footer>
 

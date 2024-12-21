@@ -41,10 +41,16 @@
 
 
 
+
+
+
+
+
 <html
   class="not-ready lg:text-base"
   style="--bg: #faf8f1"
   lang="ja-JP"
+  dir="ltr"
 >
   <head>
   <meta charset="utf-8" />
@@ -60,6 +66,7 @@
   
   <meta name="theme-color" />
 
+  
   
   
   
@@ -80,11 +87,13 @@
   <link rel="preload stylesheet" as="style" href="http://wing.chillout.chat/main.min.css" />
 
   
-
   
-   
+  
+  
+  
   <link rel="preload" as="image" href="http://wing.chillout.chat/theme.png" />
 
+  
   
   
   
@@ -92,6 +101,7 @@
   
   
 
+  
   
   <link rel="preload" as="image" href="http://wing.chillout.chat/github.svg" />
   
@@ -105,11 +115,42 @@
   
 
   
-  <link rel="icon" href="http://wing.chillout.chat/favicon.ico" />
-  <link rel="apple-touch-icon" href="http://wing.chillout.chat/apple-touch-icon.png" />
+  
+  
 
   
-  <meta name="generator" content="Hugo 0.119.0">
+  <link
+    rel="icon"
+    href="http://wing.chillout.chat/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="http://wing.chillout.chat/apple-touch-icon.png"
+  />
+
+  
+  <meta name="generator" content="Hugo 0.140.0">
+
+  
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Posts">
+  <meta itemprop="datePublished" content="2024-12-21T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2024-12-21T00:00:00+00:00">
+  
+  <meta property="og:url" content="http://wing.chillout.chat/post/">
+  <meta property="og:site_name" content="/home/wing">
+  <meta property="og:title" content="Posts">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:type" content="website">
+
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Posts">
 
   
   
@@ -122,43 +163,32 @@
   
 
   
-  
-  
-  
-  
-  <meta itemprop="name" content="Posts">
-<meta itemprop="description" content="">
-  
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content=""/>
-
+  <link rel="canonical" href="http://wing.chillout.chat/post/" />
   
   
 </head>
 
   <body class="text-black duration-200 ease-out dark:text-white">
-    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
-  <div class="relative z-50 mr-auto flex items-center">
-    <a
-      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
-      href="http://wing.chillout.chat/"
+    <header class="mx-auto flex h-[4.5rem] max-w-[--w] px-8 lg:justify-center">
+  <div class="relative z-50 ltr:mr-auto rtl:ml-auto flex items-center">
+    <a class="-translate-y-[1px] text-2xl font-medium" href="http://wing.chillout.chat/"
       >/home/wing</a
     >
     <div
-      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      class="btn-dark text-[0] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
       role="button"
       aria-label="Dark"
     ></div>
   </div>
 
   <div
-    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    class="btn-menu relative z-50 ltr:-mr-8 rtl:-ml-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
     role="button"
     aria-label="Menu"
   ></div>
 
   
+
   <script>
     
     const htmlClass = document.documentElement.classList;
@@ -210,11 +240,11 @@
 
     
     <nav
-      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+      class="mt-12 flex justify-center space-x-10 rtl:space-x-reverse dark:invert ltr:lg:ml-14 rtl:lg:mr-14 lg:mt-0 lg:items-center"
     >
       
       <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
         style="--url: url(./github.svg)"
         href="https://github.com/kwing0310"
         target="_blank"
@@ -224,7 +254,7 @@
       </a>
       
       <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
         style="--url: url(./mastodon.svg)"
         href="https://chillout.chat/@wing"
         target="_blank"
@@ -234,7 +264,7 @@
       </a>
       
       <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
         style="--url: url(./rss.svg)"
         href="http://wing.chillout.chat/index.xml"
         target="_blank"
@@ -250,7 +280,7 @@
 
 
     <main
-      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+      class="prose prose-neutral relative mx-auto min-h-[calc(100vh-9rem)] max-w-[--w] px-8 pb-16 pt-14 dark:prose-invert"
     >
       
 
@@ -269,8 +299,21 @@
 
 <section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
   
-  <h2 class="!my-0 pb-1 font-bold !leading-none">My Favorite Music in 2023</h2>
-  <time class="text-sm antialiased opacity-60"
+  <h2 class="!my-0">電話機で Mastodon に投稿してみた</h2>
+  <time class="text-xs antialiased opacity-60"
+    >Dec 21, 2024</time
+  >
+  <a class="absolute inset-0 text-[0]" href="http://wing.chillout.chat/2024/12/21/sip-mastodon/">電話機で Mastodon に投稿してみた</a>
+</section>
+
+
+
+
+
+<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
+  
+  <h2 class="!my-0">My Favorite Music in 2023</h2>
+  <time class="text-xs antialiased opacity-60"
     >Dec 31, 2023</time
   >
   <a class="absolute inset-0 text-[0]" href="http://wing.chillout.chat/2023/12/31/fav-music-2023/">My Favorite Music in 2023</a>
@@ -282,8 +325,8 @@
 
 <section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
   
-  <h2 class="!my-0 pb-1 font-bold !leading-none">MacBook Pro 15,1 (2018) に Arch Linux をインストールする手順</h2>
-  <time class="text-sm antialiased opacity-60"
+  <h2 class="!my-0">MacBook Pro 15,1 (2018) に Arch Linux をインストールする手順</h2>
+  <time class="text-xs antialiased opacity-60"
     >Sep 4, 2023</time
   >
   <a class="absolute inset-0 text-[0]" href="http://wing.chillout.chat/2023/09/04/arch-on-mbp151/">MacBook Pro 15,1 (2018) に Arch Linux をインストールする手順</a>
@@ -297,21 +340,22 @@
     </main>
 
     <footer
-  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  class="mx-auto flex h-[4.5rem] max-w-[--w] items-center px-8 text-xs uppercase tracking-wider opacity-60"
 >
   <div class="mr-auto">
-    &copy; 2023
-    <a class="link" href="http://wing.chillout.chat/">/home/wing</a>
+  
+    © Karasuma
+  
   </div>
   <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
-    >Powered by Hugo️️</a
+    >powered by hugo️️</a
   >️
   <a
     class="link"
     href="https://github.com/nanxiaobei/hugo-paper"
     rel="noopener"
     target="_blank"
-    >✎ Paper</a
+    >hugo-paper</a
   >
 </footer>
 
