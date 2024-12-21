@@ -4,42 +4,31 @@
     <title>Posts on /home/wing</title>
     <link>http://wing.chillout.chat/post/</link>
     <description>Recent content in Posts on /home/wing</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>ja-JP</language>
     <copyright>© Karasuma</copyright>
-    <lastBuildDate>Sun, 31 Dec 2023 23:45:20 +0900</lastBuildDate><atom:link href="http://wing.chillout.chat/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 21 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wing.chillout.chat/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>電話機から Mastodon に投稿してみた</title>
+      <link>http://wing.chillout.chat/2024/12/21/sip-mastodon/</link>
+      <pubDate>Sat, 21 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://wing.chillout.chat/2024/12/21/sip-mastodon/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;🎄 この記事は &lt;a href=&#34;https://adventar.org/calendars/10064&#34;&gt;Fediverse (2) Advent Calendar&lt;/a&gt; 17日目の記事です．&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;みなさんこんにちは．Mastodon サーバ &lt;a href=&#34;https://chillout.chat&#34;&gt;Chillout Chat&lt;/a&gt; 管理人 (技術担当) の Karasuma です．今回はサーバの運営とは関係ありませんが，少しマニアックな話題をお届けします．&lt;/p&gt;&#xA;&lt;details&gt;&#xA;  &lt;summary&gt;Chillout Chat (略称: チルチャ) について&lt;/summary&gt;&#xA;  &lt;p&gt;Chillout Chat は「音楽好きの人が集まる，chill out ≒ 落ち着き・くつろぎ の空間」をコンセプトにしている Mastodon サーバです．2021年から3年以上の運用実績があり，来年の春には4周年を迎えます．&lt;/p&gt;&#xA;  &lt;p&gt;実装されている独自機能など，詳しい情報は &lt;a href=&#34;https://info.chillout.chat&#34;&gt;info.chillout.chat&lt;/a&gt; に掲載しています．&lt;/p&gt;&#xA;&lt;/details&gt;&#xA;&lt;h2 id=&#34;前置き&#34;&gt;前置き&lt;/h2&gt;&#xA;&lt;p&gt;2006年生まれの私は，おそらくスマホ普及前の様子を覚えている最後の世代であり，公衆電話網を利用したサービスの衰退を見ながら育ってきました．その中でも2019年9月末に個人向け無線呼び出しサービス (いわゆる「ポケベル」) が終了したときのことは強く印象に残っています．サービス最終日には&lt;a href=&#34;https://blog.nicovideo.jp/niconews/119196.html&#34;&gt;「ポケベル終了を見守る配信」&lt;/a&gt; と題した番組がニコ生で放送されており，番組内で電話番号を公開していたポケベルにメッセージを送ったことが，自分にとって最初で最後のポケベルに触れた体験でした．&lt;/p&gt;&#xA;&lt;p&gt;「2 タッチ入力」「ポケベル打ち」などと呼ばれるメッセージの記法は今でも一部の IME に搭載されているほか，NTT ドコモの電話から SMS を送るサービスにも採用されています．SMS だけでなく Mastodon や Misskey にもポケベル打ちで投稿できれば面白いかもしれません．&lt;/p&gt;&#xA;&lt;h2 id=&#34;完成形&#34;&gt;完成形&lt;/h2&gt;&#xA;&lt;iframe src=&#34;https://chillout.chat/@wing/113691014657231914/embed&#34; class=&#34;mastodon-embed&#34; style=&#34;max-width: 100%; border: 0&#34; width=&#34;400&#34; allowfullscreen=&#34;allowfullscreen&#34;&gt;&lt;/iframe&gt;&lt;script src=&#34;https://chillout.chat/embed.js&#34; async=&#34;async&#34;&gt;&lt;/script&gt;&#xA;&lt;p&gt;この動画のように，自宅にあるビジネス向け IP 電話機から自動応答システム (内線 &lt;code&gt;115&lt;/code&gt;) に接続することで Mastodon / Misskey に投稿を送信しています．&lt;/p&gt;&#xA;&lt;p&gt;システムが応答したらポケベル打ちでメッセージ本文「ハヤヤッコ」を入力し，最後に &lt;code&gt;#&lt;/code&gt; を押します．すると入力内容が自動的に投稿され，完了のメッセージとともに電話が切断されます．&lt;/p&gt;&#xA;&lt;p&gt;(ガイダンス音声は &lt;a href=&#34;https://voicevox.hiroshiba.jp/dormitory/nurserobo_typet/&#34;&gt;VOICEVOX ナースロボ_タイプT&lt;/a&gt; で作成しました)&lt;/p&gt;&#xA;&lt;h3 id=&#34;システムの全体像&#34;&gt;システムの全体像&lt;/h3&gt;&#xA;&lt;img src=&#34;http://wing.chillout.chat/images/sip-mastodon-system.png&#34;&gt;&#xA;&lt;p&gt;自宅の LAN 内に VoIP (Voice over IP) を利用した内線電話網を構築し，その中心となる内線交換ソフトウェア (IP-PBX) に自動応答の機能を付加することで実現しています．VoIP のプロトコルには SIP を採用しており，IP-PBX は OSS の &lt;a href=&#34;https://www.asterisk.org/&#34;&gt;Asterisk&lt;/a&gt; を使っています．&lt;/p&gt;</description>
+    </item>
     <item>
       <title>My Favorite Music in 2023</title>
       <link>http://wing.chillout.chat/2023/12/31/fav-music-2023/</link>
       <pubDate>Sun, 31 Dec 2023 23:45:20 +0900</pubDate>
-      
       <guid>http://wing.chillout.chat/2023/12/31/fav-music-2023/</guid>
-      <description>これは Your Favorite Music in 2023 Advent Calendar 24日目の記事です。
-こんばんは。Chillout Chat 鯖缶 (技術担当) のからすま (@wing@chillout.chat) です。大遅刻大変失礼いたしました。年を越さずに公開するためにも早速紹介を始めていきたいと思います。
-Local Visions &amp;amp; Yuka Nagase - さくらりら https://www.youtube.com/watch?v=RXWMdhZ1Dxk
-長瀬有花さんと Local Visions とのコラボアルバム &amp;ldquo;OACL&amp;rdquo; より。90年代のアニソンを彷彿とさせるようなシンセのサウンドが特徴的です。聴いていると存在しないアニメのオープニング映像が自然と頭に浮かんできます。
-幾砂襷 - ハイパーサイン + 足立レイ https://www.youtube.com/watch?v=zEezpM56vYU
-レイさんの声にマッチする音作りと息をのむほど美しい歌詞が素晴らしいです。ベースとなる人間のいない足立レイだからこそできる新たな表現の可能性を感じる一曲です。
-Kijibato - へるぷ！ (feat. をとは) https://www.youtube.com/watch?v=Fcjhsq9c3d8
-可愛い曲調とは対照的な深い病みを感じる歌詞のインパクトに引き込まれました。辛いときはだいたいリピートで聴いていた気がします。少し毒のあるような言葉がむしろ自分を救ってくれるように感じるのです。
-中川翔子 - 65535 https://www.youtube.com/watch?v=6xXu0cneaSY
-オリジナルアニメ &amp;ldquo;16bitセンセーション&amp;rdquo; のオープニングテーマ。&amp;ldquo;65535&amp;rdquo; は 16bit ハイカラーディスプレイが発色できる色の数であり、同作におけるゲーム制作の場面にも関わりがあります。世代問わずあらゆるオタクにぜひ聴いてほしい一曲です。
-Bôa - Duvet 2023 https://www.youtube.com/watch?v=s0NME1GfbIc
-98年の伝説的なメディアミックス作品 &amp;ldquo;serial experiments lain&amp;rdquo; のアニメ版主題歌。セルフカバーのMVが今年、25周年を機に公開されました。lain と同様にいつまで経っても新鮮さを感じる名曲です。
-居間のテレビから蛍の光が聞こえてきました。そろそろ除夜の鐘といったところでしょうか。とりあえず執筆を終わらせることにします。今年も皆様には大変お世話になりました。来年もまた、どうぞよろしくお願いいたします。</description>
+      <description>&lt;p&gt;&lt;em&gt;これは &lt;a href=&#34;https://adventar.org/calendars/8828&#34;&gt;Your Favorite Music in 2023 Advent Calendar&lt;/a&gt; 24日目の記事です。&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;こんばんは。Chillout Chat 鯖缶 (技術担当) のからすま (&lt;a href=&#34;htttps://chillout.chat/@wing&#34;&gt;@wing@chillout.chat&lt;/a&gt;) です。大遅刻大変失礼いたしました。年を越さずに公開するためにも早速紹介を始めていきたいと思います。&lt;/p&gt;&#xA;&lt;h2 id=&#34;local-visions--yuka-nagase---さくらりら&#34;&gt;Local Visions &amp;amp; Yuka Nagase - さくらりら&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=RXWMdhZ1Dxk&#34;&gt;https://www.youtube.com/watch?v=RXWMdhZ1Dxk&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;長瀬有花さんと Local Visions とのコラボアルバム &amp;ldquo;OACL&amp;rdquo; より。90年代のアニソンを彷彿とさせるようなシンセのサウンドが特徴的です。聴いていると存在しないアニメのオープニング映像が自然と頭に浮かんできます。&lt;/p&gt;&#xA;&lt;h2 id=&#34;幾砂襷---ハイパーサイン--足立レイ&#34;&gt;幾砂襷 - ハイパーサイン + 足立レイ&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=zEezpM56vYU&#34;&gt;https://www.youtube.com/watch?v=zEezpM56vYU&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;レイさんの声にマッチする音作りと息をのむほど美しい歌詞が素晴らしいです。ベースとなる人間のいない足立レイだからこそできる新たな表現の可能性を感じる一曲です。&lt;/p&gt;&#xA;&lt;h2 id=&#34;kijibato---へるぷ-feat-をとは&#34;&gt;Kijibato - へるぷ！ (feat. をとは)&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=Fcjhsq9c3d8&#34;&gt;https://www.youtube.com/watch?v=Fcjhsq9c3d8&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;可愛い曲調とは対照的な深い病みを感じる歌詞のインパクトに引き込まれました。辛いときはだいたいリピートで聴いていた気がします。少し毒のあるような言葉がむしろ自分を救ってくれるように感じるのです。&lt;/p&gt;&#xA;&lt;h2 id=&#34;中川翔子---65535&#34;&gt;中川翔子 - 65535&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=6xXu0cneaSY&#34;&gt;https://www.youtube.com/watch?v=6xXu0cneaSY&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;オリジナルアニメ &amp;ldquo;16bitセンセーション&amp;rdquo; のオープニングテーマ。&amp;ldquo;65535&amp;rdquo; は 16bit ハイカラーディスプレイが発色できる色の数であり、同作におけるゲーム制作の場面にも関わりがあります。世代問わずあらゆるオタクにぜひ聴いてほしい一曲です。&lt;/p&gt;&#xA;&lt;h2 id=&#34;boa---duvet-2023&#34;&gt;Bôa - Duvet 2023&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=s0NME1GfbIc&#34;&gt;https://www.youtube.com/watch?v=s0NME1GfbIc&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;98年の伝説的なメディアミックス作品 &amp;ldquo;serial experiments lain&amp;rdquo; のアニメ版主題歌。セルフカバーのMVが今年、25周年を機に公開されました。lain と同様にいつまで経っても新鮮さを感じる名曲です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;居間のテレビから蛍の光が聞こえてきました。そろそろ除夜の鐘といったところでしょうか。とりあえず執筆を終わらせることにします。今年も皆様には大変お世話になりました。来年もまた、どうぞよろしくお願いいたします。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>MacBook Pro 15,1 (2018) に Arch Linux をインストールする手順</title>
       <link>http://wing.chillout.chat/2023/09/04/arch-on-mbp151/</link>
       <pubDate>Mon, 04 Sep 2023 00:00:00 +0000</pubDate>
-      
       <guid>http://wing.chillout.chat/2023/09/04/arch-on-mbp151/</guid>
-      <description>Wallpaper: Arch ちゃん by Ravimo (CC-BY 4.0)
-Introduction 2018 年から 2020 年夏までの間に発表された Intel Mac には Apple T2 セキュリティチップが搭載されており、サードパーティ製の OS が簡単に動作しないようになっています。T2 チップに対応した Linux カーネルやドライバーを開発するコミュニティ主導の t2linux プロジェクトが進み、十分に実用できるほどの段階になってきたため、私のメイン機である MacBook Pro 15,1 (2018) に Arch Linux をインストールしてみました。
-btw I use Arch 4 年以上使い続けた macOS が素晴らしい OS であることは言うまでもありませんが、今後のメイン機の利用目的を考えると Arch Linux をクリーンインストールしても良いのではないか、という考えに至りました。詳しい経緯については別の記事に書きたいと思いますが、今伝えたいのは「相当な理由が無い限り、T2 Mac に Linux をインストールすることは避けるべきである」ということです。ただでさえ大変な Arch Linux のインストール手順に T2 Mac 特有の作業が必要になるわけですから、覚悟が必要なのは当然と言ってもいいかもしれませんね。
-⚠ Caution この記事は 2023 年 9 月現在の情報をもとに書かれています。インストールする前に t2linux wiki で最新の情報を確認することを強く推奨します。 この記事に掲載された内容によって生じた損害等の一切の責任を負いかねますのでご了承ください。試す際は自己責任でお願いします。 下準備 基本的には Pre-Install - t2linux wiki に従って進めていく形となります。今回は実験的に Arch Linux のみのシングルブートを試してみましたが、Mac のファームウェアの更新 (ソフトウェアアップデート) が macOS 経由でしかできないため、macOS とのデュアルブートをおすすめします。</description>
+      <description>&lt;img style=&#34;margin-bottom: 0;&#34; src=&#34;http://wing.chillout.chat/images/arch-on-mbp151-cover.jpg&#34; alt=&#34;Running Arch Linux on MacBook Pro 15,1&#34;&gt;&#xA;&lt;p style=&#34;text-align: center; font-size: 0.8em;&#34;&gt;Wallpaper: &lt;a href=&#34;https://www.pixiv.net/artworks/103383813&#34;&gt;Arch ちゃん by Ravimo&lt;/a&gt; (CC-BY 4.0)&lt;/p&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;2018 年から 2020 年夏までの間に発表された Intel Mac には Apple T2 セキュリティチップが搭載されており、サードパーティ製の OS が簡単に動作しないようになっています。T2 チップに対応した Linux カーネルやドライバーを開発するコミュニティ主導の &lt;a href=&#34;https://t2linux.org/&#34;&gt;t2linux&lt;/a&gt; プロジェクトが進み、十分に実用できるほどの段階になってきたため、私のメイン機である MacBook Pro 15,1 (2018) に Arch Linux をインストールしてみました。&lt;/p&gt;&#xA;&lt;h3 id=&#34;btw-i-use-arch&#34;&gt;btw I use Arch&lt;/h3&gt;&#xA;&lt;p&gt;4 年以上使い続けた macOS が素晴らしい OS であることは言うまでもありませんが、今後のメイン機の利用目的を考えると Arch Linux をクリーンインストールしても良いのではないか、という考えに至りました。詳しい経緯については別の記事に書きたいと思いますが、今伝えたいのは「相当な理由が無い限り、T2 Mac に Linux をインストールすることは避けるべきである」ということです。ただでさえ大変な Arch Linux のインストール手順に T2 Mac 特有の作業が必要になるわけですから、覚悟が必要なのは当然と言ってもいいかもしれませんね。&lt;/p&gt;&#xA;&lt;h3 id=&#34;-caution&#34;&gt;⚠ Caution&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;この記事は 2023 年 9 月現在の情報をもとに書かれています。インストールする前に &lt;a href=&#34;https://wiki.t2linux.org/&#34;&gt;t2linux wiki&lt;/a&gt; で最新の情報を確認することを&lt;strong&gt;強く推奨&lt;/strong&gt;します。&lt;/li&gt;&#xA;&lt;li&gt;この記事に掲載された内容によって生じた損害等の一切の責任を負いかねますのでご了承ください。試す際は&lt;strong&gt;自己責任&lt;/strong&gt;でお願いします。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;下準備&#34;&gt;下準備&lt;/h2&gt;&#xA;&lt;p&gt;基本的には &lt;a href=&#34;https://wiki.t2linux.org/guides/preinstall/&#34;&gt;Pre-Install - t2linux wiki&lt;/a&gt; に従って進めていく形となります。今回は実験的に &lt;strong&gt;Arch Linux のみのシングルブート&lt;/strong&gt;を試してみましたが、Mac のファームウェアの更新 (ソフトウェアアップデート) が macOS 経由でしかできないため、macOS とのデュアルブートをおすすめします。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

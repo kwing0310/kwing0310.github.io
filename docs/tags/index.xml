@@ -4,8 +4,9 @@
     <title>Tags on /home/wing</title>
     <link>http://wing.chillout.chat/tags/</link>
     <description>Recent content in Tags on /home/wing</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>ja-JP</language>
-    <copyright>© Karasuma</copyright><atom:link href="http://wing.chillout.chat/tags/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© Karasuma</copyright>
+    <atom:link href="http://wing.chillout.chat/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
